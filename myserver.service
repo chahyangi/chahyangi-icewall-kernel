@@ -1,0 +1,46 @@
+[Unit]
+Description=My Unix Domain Socket Server
+After=network.target
+
+[Service]
+User=jeong
+Group=jeong
+# Pre 단계는 root 권한으로만 실행되게 함 (소켓 파일이 root 소유여도 삭제 가능)
+PermissionsStartOnly=true
+ExecStartPre=/bin/rm -f /tmp/mysocket
+ExecStart=/home/jeong/socket/server
+ExecStartPost=/bin/chmod 0666 /tmp/mysocket
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
